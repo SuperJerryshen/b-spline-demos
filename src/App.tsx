@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
+import UniformBSplineOfOrderThree from "./pages/UniformBSplineOfOrderThree";
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Link to="/uniform-b-spline-of-order-3">均匀3阶B样条曲线</Link>
+      </div>
+      <Switch>
+        <Route
+          path="/uniform-b-spline-of-order-3"
+          component={UniformBSplineOfOrderThree}
+        />
+      </Switch>
+    </Router>
   );
-}
+};
 
 export default App;
