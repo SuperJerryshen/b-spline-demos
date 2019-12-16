@@ -7,7 +7,11 @@
     "@types/node": "12.12.17",
     "@types/react": "16.9.16",
     "@types/react-dom": "16.9.4",
+    "antd": "^3.26.3",
+    "babel-plugin-import": "^1.13.0",
+    "customize-cra": "^0.9.1",
     "react": "^16.12.0",
+    "react-app-rewired": "^2.1.5",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
@@ -15,10 +19,10 @@
     "zrender": "^4.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "PUBLIC_URL=/b-spline-demos react-scripts build && rm -rf docs && mv build docs",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "PUBLIC_URL=/b-spline-demos react-app-rewired build && rm -rf docs && mv build docs",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": "react-app"
