@@ -3,7 +3,7 @@ import zrender from "zrender";
 
 interface IFactorType {}
 
-type IPoint = [number, number];
+export type IPoint = [number, number];
 
 const getDividedValue = (numerator: number, denominator: number) => {
   if (denominator === 0) {
