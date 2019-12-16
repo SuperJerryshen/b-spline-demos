@@ -1,4 +1,4 @@
-`B样条曲线（B-Spline）`
+# B样条曲线（B-Spline）
 
 > [查看 Demo](https://superjerryshen.github.io/b-spline-demos)。
 
