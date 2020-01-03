@@ -10,9 +10,11 @@ import { BSplinePolynomial } from "./BSplinePolynomial";
 
 export class OpenUniformBSplineClass {
   cPoints: IPoint[];
+  mutationPointIndexes: number[] = [];
   order: number;
   tArray: number[];
   bSplinePolynomial: BSplinePolynomial;
+  ratioCache: Map<number, number> = new Map();
 
   constructor(cPoints: IPoint[], order: number) {
     if (order > cPoints.length) {
@@ -23,8 +25,8 @@ export class OpenUniformBSplineClass {
     if (order < 2) {
       throw new Error("order cannot be less than 2.");
     }
-    this.cPoints = cPoints;
     this.order = order;
+    this.cPoints = cPoints;
     this.tArray = this.generateTArray();
     this.bSplinePolynomial = new BSplinePolynomial(this.tArray, order);
   }
@@ -54,5 +56,12 @@ export class OpenUniformBSplineClass {
       },
       [0, 0]
     );
+  }
+
+  updatePoint(index: number, point: IPoint) {
+    if (index < 0 || index > this.cPoints.length - 1) {
+      throw new Error(`parameter index error.`);
+    }
+    this.cPoints[index] = point;
   }
 }

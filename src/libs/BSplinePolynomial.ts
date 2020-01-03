@@ -19,6 +19,10 @@ export class BSplinePolynomial {
   private cache: Map<number, IPolynomialFunc> = new Map();
   private polynomialArray: BSplinePolynomial[] = [];
 
+  /**
+   * @param tArray 多项式取值边界点
+   * @param order 多项式阶数（例如3阶则为2次，5阶则为4次）
+   */
   constructor(tArray: number[], order: number) {
     this.tArray = tArray;
     this.order = order;
@@ -57,17 +61,13 @@ export class BSplinePolynomial {
         }
       };
     } else {
+      const k1 = tList[index + order - 1] - tList[index];
+      const k2 = tList[index + order] - tList[index + 1];
       func = (t: number) => {
         return (
-          getDividedValue(
-            t - tList[index],
-            tList[index + order - 1] - tList[index]
-          ) *
+          getDividedValue(t - tList[index], k1) *
             polynomialIndexSubtractOne.get(index)(t) +
-          getDividedValue(
-            tList[index + order] - t,
-            tList[index + order] - tList[index + 1]
-          ) *
+          getDividedValue(tList[index + order] - t, k2) *
             polynomialIndexSubtractOne.get(index + 1)(t)
         );
       };

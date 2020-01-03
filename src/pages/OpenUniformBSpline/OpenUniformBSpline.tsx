@@ -54,8 +54,9 @@ export default function OpenUniformBSpline() {
           draggable: true,
         });
         circle.on("drag", (e: any) => {
-          cPoints[i] = [e.offsetX, e.offsetY] as IPoint;
-          const bSpline = new OpenUniformBSplineClass(cPoints, 3);
+          const newPoint = [e.offsetX, e.offsetY] as IPoint;
+          cPoints[i] = newPoint;
+          bSpline.updatePoint(i, newPoint);
           const points: IPoint[] = [];
           for (
             let i = 0;
