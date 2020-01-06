@@ -128,7 +128,6 @@ export default function DynamicBSpline() {
             newTArray[i] = tArray[tArray.length - 1];
           }
         }
-        console.log(newTArray);
         setTArray(newTArray);
       }
     }
