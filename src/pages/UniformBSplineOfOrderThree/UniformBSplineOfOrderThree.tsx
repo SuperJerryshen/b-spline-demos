@@ -61,7 +61,7 @@ export default function UniformBSplineOfOrderThree() {
       <div style={{ textAlign: "center", marginBottom: "32px" }}>
         均匀三阶B样条曲线
       </div>
-      <div ref={elRef} style={{ width: "100%", height: "400px" }} />
+      <div ref={elRef} style={{ width: "100%", height: "600px" }} />
     </div>
   );
 }
