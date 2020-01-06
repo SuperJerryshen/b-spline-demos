@@ -7,9 +7,9 @@ import { BSpline } from "../../libs/BSpline";
 
 const DEFAULT_C_POINTS: IPoint[] = [
   [50, 50],
-  [100, 70],
-  [200, 200],
-  [200, 300],
+  [100, 300],
+  [300, 100],
+  [380, 200],
   [400, 400],
 ];
 const DEFAULT_T_ARRAY: number[] = [0, 0, 0, 1, 2, 3, 3, 3];

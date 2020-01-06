@@ -10,6 +10,7 @@ import { BSpline } from "./BSpline";
 
 export class UniformBSpline {
   bSpline: BSpline;
+  tRange: [number, number];
 
   constructor(cPoints: IPoint[]) {
     this.bSpline = new BSpline({
@@ -17,6 +18,10 @@ export class UniformBSpline {
       order: 3,
       tArray: this.generateTArray(cPoints, 3),
     });
+    /**
+     * 其取值为order - 1至控制点数量
+     */
+    this.tRange = [2, cPoints.length];
   }
 
   /**
@@ -31,8 +36,7 @@ export class UniformBSpline {
   }
 
   getPoints(step: number = 0.05): IPoint[] {
-    const min = this.bSpline.tArray[0];
-    const max = this.bSpline.tArray[this.bSpline.tArray.length - 1];
+    const [min, max] = this.tRange;
     const arr: IPoint[] = [];
     for (let i = min; i <= max; i += step) {
       arr.push(this.bSpline.getPoint(i));

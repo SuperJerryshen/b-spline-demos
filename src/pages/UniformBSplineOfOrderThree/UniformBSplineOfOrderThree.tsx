@@ -4,13 +4,13 @@ import { UniformBSpline } from "../../libs/UniformBSpline";
 import { IPoint } from "../../libs/types";
 
 let points: IPoint[] = [
-  [50, 10],
-  [100, 30],
-  [200, 60],
+  [50, 50],
+  [100, 300],
+  [200, 50],
   [300, 300],
-  [150, 200],
-  [100, 150],
-  [50, 100],
+  [400, 50],
+  [500, 300],
+  [600, 50],
 ];
 
 export default function UniformBSplineOfOrderThree() {
