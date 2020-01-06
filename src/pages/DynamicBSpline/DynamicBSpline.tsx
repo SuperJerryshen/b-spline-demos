@@ -82,7 +82,10 @@ export default function DynamicBSpline() {
         z.add(circle);
       });
     } catch (error) {
-      notification.error({ message: "绘制错误", description: error.message });
+      notification.error({
+        message: "Error Drawing",
+        description: error.message,
+      });
     }
   };
 
@@ -121,13 +124,14 @@ export default function DynamicBSpline() {
   return (
     <div style={{ padding: "16px" }}>
       <div style={{ textAlign: "center", marginBottom: "32px" }}>
-        自由参数的B样条曲线（默认为开放均匀三阶B样条）
+        B-Spline-Curve with custom
+        parameters(自由参数的B样条曲线)（默认为开放均匀三阶B样条）
       </div>
       <Form layout="inline">
-        <Form.Item label="阶数">
+        <Form.Item label="Order(阶数)">
           <InputNumber step={1} min={2} value={order} onChange={setOrder} />
         </Form.Item>
-        <Form.Item label="控制点">
+        <Form.Item label="Control Points(控制点)">
           <div style={{ textAlign: "center" }}>
             {map(cPoints, (cp, index) => {
               return (
@@ -165,11 +169,11 @@ export default function DynamicBSpline() {
               }}
               style={{ marginTop: "16px" }}
             >
-              添加控制点
+              Add Point(添加控制点)
             </Button>
           </div>
         </Form.Item>
-        <Form.Item label="参数t数组">
+        <Form.Item label="Array of parameter t(参数t数组)">
           <>
             {map(tArray, (t, index) => {
               return (
@@ -191,10 +195,10 @@ export default function DynamicBSpline() {
         <Form.Item>
           <Button.Group>
             <Button type="primary" onClick={handleGenerate}>
-              生成
+              Generate(生成)
             </Button>
             <Button type="danger" onClick={handleReset}>
-              重置
+              Reset(重置)
             </Button>
           </Button.Group>
         </Form.Item>

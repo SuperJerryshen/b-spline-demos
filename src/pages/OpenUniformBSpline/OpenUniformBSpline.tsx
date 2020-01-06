@@ -76,7 +76,7 @@ export default function OpenUniformBSpline() {
   return (
     <div style={{ padding: "32px 0" }}>
       <div style={{ textAlign: "center", marginBottom: "32px" }}>
-        开放均匀B样条曲线
+        The open uniform b-spline-curve(开放均匀B样条曲线)
       </div>
       <div ref={elRef} style={{ width: "100%", height: "400px" }} />
     </div>

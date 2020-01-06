@@ -59,7 +59,7 @@ export default function UniformBSplineOfOrderThree() {
   return (
     <div style={{ padding: "32px 0" }}>
       <div style={{ textAlign: "center", marginBottom: "32px" }}>
-        均匀三阶B样条曲线
+        The three order uniform b-spline-curve(均匀三阶B样条曲线)
       </div>
       <div ref={elRef} style={{ width: "100%", height: "600px" }} />
     </div>

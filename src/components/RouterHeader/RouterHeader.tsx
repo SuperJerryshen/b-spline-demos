@@ -7,7 +7,7 @@ export default function RouterHeader() {
   const location = useLocation();
   return (
     <div style={{ padding: "16px" }}>
-      <h1 style={{ textAlign: "center" }}>B样条曲线</h1>
+      <h1 style={{ textAlign: "center" }}>B-Spline-Curve(B样条曲线)</h1>
       <Radio.Group
         value={location.pathname}
         onChange={e => {
@@ -15,13 +15,13 @@ export default function RouterHeader() {
         }}
       >
         <Radio.Button value="/uniform-b-spline-of-order-3">
-          均匀3阶B样条
+          The three order uniform b-spline(均匀3阶B样条)
         </Radio.Button>
         <Radio.Button value="/open-uniform-b-spline">
-          开放均匀B样条
+          The open uniform b-spline(开放均匀B样条)
         </Radio.Button>
         <Radio.Button value="/dynamic-b-spline">
-          自由参数的B样条曲线
+          The custom b-spline(自由参数的B样条曲线)
         </Radio.Button>
       </Radio.Group>
     </div>
