@@ -64,6 +64,15 @@ export default function DynamicBSpline() {
           },
           draggable: true,
         });
+        const text = new zrender.Text({
+          style: {
+            text: `t${i}(${o[0]}, ${o[1]})`,
+            textOffset: [o[0], o[1]],
+            x: o[0] + 6,
+            y: o[1] - 6,
+            fontSize: 10,
+          },
+        });
         circle.on("drag", (e: any) => {
           const newPoint = [e.offsetX, e.offsetY] as IPoint;
           bSpline.updatePoint(i, newPoint);
@@ -77,9 +86,14 @@ export default function DynamicBSpline() {
             points.push(p);
           }
           line.shape.points = points;
+          text.style.x = e.offsetX + 6;
+          text.style.y = e.offsetY - 6;
+          text.style.text = `t${i}(${e.offsetX}, ${e.offsetY})`;
+          text.dirty();
           line.dirty();
         });
         z.add(circle);
+        z.add(text);
       });
     } catch (error) {
       notification.error({
