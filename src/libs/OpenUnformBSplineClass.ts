@@ -6,15 +6,12 @@
  * @Content: 开放均匀B样条曲线
  */
 import { IPoint } from "./types";
-import { BSplinePolynomial } from "./BSplinePolynomial";
+import { BSpline } from "./BSpline";
 
 export class OpenUniformBSplineClass {
-  cPoints: IPoint[];
   mutationPointIndexes: number[] = [];
-  order: number;
-  tArray: number[];
-  bSplinePolynomial: BSplinePolynomial;
   ratioCache: Map<number, number> = new Map();
+  bSpline: BSpline;
 
   constructor(cPoints: IPoint[], order: number) {
     if (order > cPoints.length) {
@@ -25,43 +22,36 @@ export class OpenUniformBSplineClass {
     if (order < 2) {
       throw new Error("order cannot be less than 2.");
     }
-    this.order = order;
-    this.cPoints = cPoints;
-    this.tArray = this.generateTArray();
-    this.bSplinePolynomial = new BSplinePolynomial(this.tArray, order);
+    this.bSpline = new BSpline({
+      order,
+      points: cPoints,
+      tArray: this.generateTArray(cPoints, order),
+    });
   }
 
-  private generateTArray() {
+  private generateTArray(cPoints: IPoint[], order: number) {
     const arr: number[] = [];
-    const tLen = this.cPoints.length + this.order;
+    const tLen = cPoints.length + order;
     for (let i = 0; i < tLen; i += 1) {
-      if (i < this.order) {
+      if (i < order) {
         arr.push(0);
-      } else if (i <= this.cPoints.length) {
-        arr.push(i - this.order + 1);
+      } else if (i <= cPoints.length) {
+        arr.push(i - order + 1);
       } else {
-        arr.push(this.cPoints.length - this.order + 1);
+        arr.push(cPoints.length - order + 1);
       }
     }
     return arr;
   }
 
   getPoint(t: number) {
-    return this.cPoints.reduce(
-      (prev, curr, index) => {
-        const [x, y] = prev;
-        const [nx, ny] = curr;
-        const ratio = this.bSplinePolynomial.get(index)(t);
-        return [x + ratio * nx, y + ratio * ny];
-      },
-      [0, 0]
-    );
+    return this.bSpline.getPoint(t);
   }
 
   updatePoint(index: number, point: IPoint) {
-    if (index < 0 || index > this.cPoints.length - 1) {
+    if (index < 0 || index > this.bSpline.points.length - 1) {
       throw new Error(`parameter index error.`);
     }
-    this.cPoints[index] = point;
+    this.bSpline.points[index] = point;
   }
 }

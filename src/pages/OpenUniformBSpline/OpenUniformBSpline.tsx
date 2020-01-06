@@ -31,7 +31,7 @@ export default function OpenUniformBSpline() {
       const points: IPoint[] = [];
       for (
         let i = 0;
-        i <= bSpline.tArray[bSpline.tArray.length - 1];
+        i <= bSpline.bSpline.tArray[bSpline.bSpline.tArray.length - 1];
         i += 0.01
       ) {
         const p = bSpline.getPoint(i);
@@ -60,7 +60,7 @@ export default function OpenUniformBSpline() {
           const points: IPoint[] = [];
           for (
             let i = 0;
-            i <= bSpline.tArray[bSpline.tArray.length - 1];
+            i <= bSpline.bSpline.tArray[bSpline.bSpline.tArray.length - 1];
             i += 0.01
           ) {
             const p = bSpline.getPoint(i);
