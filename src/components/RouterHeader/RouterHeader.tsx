@@ -21,7 +21,7 @@ export default function RouterHeader() {
           开放均匀B样条
         </Radio.Button>
         <Radio.Button value="/dynamic-b-spline">
-          动态参数的B样条曲线
+          自由参数的B样条曲线
         </Radio.Button>
       </Radio.Group>
     </div>

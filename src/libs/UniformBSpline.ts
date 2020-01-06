@@ -6,64 +6,36 @@
  * @Content: 3阶均匀B样条曲线
  */
 import { IPoint } from "./types";
-import { BSplinePolynomial } from "./BSplinePolynomial";
+import { BSpline } from "./BSpline";
 
 export class UniformBSpline {
-  /**
-   * 阶数，表示3阶
-   */
-  order: number = 3;
-
-  /**
-   * t取值的最大值
-   */
-  maxT: number;
-
-  /**
-   * t取值的边界数组
-   */
-  tArray: number[];
-
-  cPoints: IPoint[];
-
-  tRange: [number, number];
-  bSplinePolynomial: BSplinePolynomial;
+  bSpline: BSpline;
 
   constructor(cPoints: IPoint[]) {
-    this.cPoints = cPoints;
-    this.maxT = cPoints.length + this.order;
-    this.tArray = this.generateTArray();
-    this.tRange = [this.order - 1, cPoints.length];
-    this.bSplinePolynomial = new BSplinePolynomial(this.tArray, this.order);
+    this.bSpline = new BSpline({
+      points: cPoints,
+      order: 3,
+      tArray: this.generateTArray(cPoints, 3),
+    });
   }
 
   /**
    * 生成t取值边界的数组
    */
-  generateTArray(): number[] {
+  generateTArray(cPoints: IPoint[], order: number): number[] {
     const arr: number[] = [];
-    for (let i = 0; i <= this.maxT; i++) {
+    for (let i = 0; i < cPoints.length + order; i++) {
       arr.push(i);
     }
     return arr;
   }
 
   getPoints(step: number = 0.05): IPoint[] {
-    const [min, max] = this.tRange;
-    const gens = this.cPoints.map((o, i) => this.bSplinePolynomial.get(i));
+    const min = this.bSpline.tArray[0];
+    const max = this.bSpline.tArray[this.bSpline.tArray.length - 1];
     const arr: IPoint[] = [];
     for (let i = min; i <= max; i += step) {
-      const bi = gens.map(f => f(i));
-      arr.push(
-        this.cPoints.reduce(
-          (prev, curr, index) => {
-            const [prevx, prevy] = prev;
-            const [currx, curry] = curr;
-            return [prevx + currx * bi[index], prevy + curry * bi[index]];
-          },
-          [0, 0]
-        )
-      );
+      arr.push(this.bSpline.getPoint(i));
     }
     return arr;
   }
