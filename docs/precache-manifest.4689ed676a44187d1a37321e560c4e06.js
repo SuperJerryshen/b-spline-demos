@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "721ffa9c407590e4194d0a13229267d7",
+    "revision": "f8f6826303458a5468c6bd882068a866",
     "url": "/b-spline-demos/index.html"
   },
   {
-    "revision": "1b5c448677075e30b3c7",
+    "revision": "770da6aaad41a8e7daa1",
     "url": "/b-spline-demos/static/css/2.cf6c1e52.chunk.css"
   },
   {
-    "revision": "90a3c5df07f049e4cf10",
+    "revision": "6812c4f8dbcc54d70137",
     "url": "/b-spline-demos/static/css/main.5ecd60fb.chunk.css"
   },
   {
-    "revision": "1b5c448677075e30b3c7",
-    "url": "/b-spline-demos/static/js/2.a8bd510a.chunk.js"
+    "revision": "770da6aaad41a8e7daa1",
+    "url": "/b-spline-demos/static/js/2.6c58f5fe.chunk.js"
   },
   {
     "revision": "fabe6e8bc1203e177b62cd9daebbf511",
-    "url": "/b-spline-demos/static/js/2.a8bd510a.chunk.js.LICENSE"
+    "url": "/b-spline-demos/static/js/2.6c58f5fe.chunk.js.LICENSE"
   },
   {
-    "revision": "90a3c5df07f049e4cf10",
-    "url": "/b-spline-demos/static/js/main.1a6031a1.chunk.js"
+    "revision": "6812c4f8dbcc54d70137",
+    "url": "/b-spline-demos/static/js/main.5d4bb08a.chunk.js"
   },
   {
     "revision": "cf6f9d89c75590e232d2",
